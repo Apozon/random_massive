@@ -8,24 +8,18 @@ import kotlin.random.Random
 Массивы с четным порядковым номером отсортировать по возрастанию, с нечетным порядковым номером - по убыванию.
 На выходе функция должна вернуть массив с отсортированными массивами.
 */
-
-    fun random_array (n:Int) : ArrayList<Array<Int>> {
+fun random_array (n:Int) : ArrayList<Array<Int>> {
         if (n < 1) return ArrayList()
-        var massive_size = MutableList<Int>(1024, { i -> i + i })
+        var massive_size = MutableList<Int>(1024, { i -> i+1})
         Collections.shuffle(massive_size)
         val shuffle_massive = massive_size.toTypedArray()
         var main_massive = ArrayList<Array<Int>>(n)
-            for (main_id in 0..n) {
-                for (id in 0..n) {
-                    if (main_id % 2 == 0 && main_id == 0) {
-                        main_massive.add(Array(shuffle_massive[id], { Random.nextInt() }).sortedArray())
-                    } else {
-                        main_massive.add(Array(shuffle_massive[id], { Random.nextInt() }).sortedArrayDescending())
-                    }
-                }
-
-            }
-        return main_massive
+        for (id in 0..n) {
+            main_massive.add(Array(shuffle_massive[id], { Random.nextInt() }))
+        }
+                for (main_id in 0..n step 2) main_massive[main_id].sortedArray()
+                for (main_id in 1..n step 2) main_massive[main_id].sortedArrayDescending()
+                return main_massive
     }
 
 
