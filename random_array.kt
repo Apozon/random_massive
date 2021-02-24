@@ -17,19 +17,7 @@ import kotlin.random.Random
     for (id in 0..n-1) {
         main_array.add(Array(shuffle_array[id], { Random.nextInt() }))
     }
-    for (main_id in 0..n-1 step 2) main_array[main_id].sortedArray()
-    for (main_id in 1..n-1 step 2) main_array[main_id].sortedArrayDescending()
+    for (main_id in 0..n-1 step 2) main_array[main_id] =  main_array[main_id].sortedArray()
+    for (main_id in 1..n-1 step 2) main_array[main_id] =  main_array[main_id].sortedArrayDescending()
     return main_array
 }
-
-
-
-
-
-
-
-
-
-
-
-
